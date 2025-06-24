@@ -1,0 +1,11 @@
+# Frontend
+Frontend/node_modules/
+Frontend/dist/
+
+# Laravel
+moodvis/vendor/
+moodvis/storage/*.key
+moodvis/storage/framework/*
+moodvis/storage/logs/*
+moodvis/.env
+

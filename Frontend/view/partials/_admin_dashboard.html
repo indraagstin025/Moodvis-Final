@@ -1,0 +1,149 @@
+<section id="admin-panel" class="mb-12">
+  <div class="space-y-10">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Panel Manajemen Admin</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-2 space-y-10">
+        <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border border-gray-200">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">Buat Pengguna Baru</h3>
+          <form id="createUserForm" class="space-y-5">
+            <div>
+              <label for="newUserName" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+              <input
+                type="text"
+                id="newUserName"
+                name="name"
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+                placeholder="Masukkan nama lengkap"
+                required
+              />
+            </div>
+            <div>
+              <label for="newUserEmail" class="block text-sm font-medium text-gray-700 mb-2">Alamat Email</label>
+              <input
+                type="email"
+                id="newUserEmail"
+                name="email"
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+                placeholder="email@contoh.com"
+                required
+              />
+            </div>
+            <div>
+              <label for="newUserPassword" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+              <input
+                type="password"
+                id="newUserPassword"
+                name="password"
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+            <div>
+              <label for="newUserRole" class="block text-sm font-medium text-gray-700 mb-2">Role</label>
+              <select id="newUserRole" name="role" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white transition duration-200">
+                <option value="pengajar" selected>Pengajar</option>
+                <option value="murid">Murid</option>
+              </select>
+            </div>
+
+            <div id="class-selection-container" class="hidden">
+              <label for="newUserClass" class="block text-sm font-medium text-gray-700 mb-2">Pilih Kelas</label>
+              <select id="newUserClass" name="class_id" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white transition duration-200">
+                <option value="">-- Memuat kelas... --</option>
+              </select>
+            </div>
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                Buat Akun
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border border-gray-200">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">Manajemen Kelas</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-base font-semibold text-gray-700 mb-3">Tambah Kelas Baru</h4>
+              <div class="space-y-3">
+                <div>
+                  <label for="new-class-name" class="sr-only">Nama Kelas</label>
+                  <input type="text" id="new-class-name" placeholder="cth: XI IPA 2" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200" />
+                </div>
+                <div>
+                  <label for="new-class-teacher" class="sr-only">Wali Kelas</label>
+                  <select id="new-class-teacher" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white transition duration-200">
+                    <option value="">-- Pilih Wali Kelas (Opsional) --</option>
+                    </select>
+                </div>
+                <button id="add-class-btn" class="w-full bg-green-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-700 shadow-sm hover:shadow-md transition-all duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                  </svg>
+                  Tambah Kelas
+                </button>
+              </div>
+              <p id="class-form-error" class="text-red-500 text-sm mt-2"></p>
+            </div>
+
+            <div>
+              <h4 class="text-base font-semibold text-gray-700 mb-3">Daftar Kelas Saat Ini</h4>
+              <div class="overflow-x-auto border border-gray-200 rounded-lg">
+                <table class="min-w-full text-sm text-left">
+                  <thead class="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                      <th scope="col" class="px-4 py-3 font-semibold text-gray-600">Nama Kelas</th>
+                      <th scope="col" class="px-4 py-3 font-semibold text-gray-600">Wali Kelas</th>
+                      <th scope="col" class="px-4 py-3 font-semibold text-gray-600 text-center w-24">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="class-list-body" class="divide-y divide-gray-100">
+                    <tr>
+                      <td colspan="3" class="px-4 py-6 text-center text-gray-500">Memuat data kelas...</td>
+                    </tr>
+                    </tbody>
+                </table>
+              </div>
+              <p id="class-list-empty-message" class="text-gray-500 text-center mt-4 hidden">Belum ada kelas yang ditambahkan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-3">
+        <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+          <div class="p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-gray-800">Daftar Pengguna</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm text-left">
+              <thead class="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th scope="col" class="px-6 py-4 font-semibold text-gray-600">Nama</th>
+                  <th scope="col" class="px-6 py-4 font-semibold text-gray-600">Email</th>
+                  <th scope="col" class="px-6 py-4 font-semibold text-gray-600 w-40">Role</th>
+                  <th scope="col" class="px-6 py-4 font-semibold text-gray-600 w-48">Tanggal Daftar</th>
+                  <th scope="col" class="px-6 py-4 font-semibold text-gray-600 w-24 text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="user-list-body" class="divide-y divide-gray-200">
+                <tr>
+                  <td colspan="5" class="px-6 py-10 text-center text-gray-500">Memuat data pengguna...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="pagination-controls" class="p-6 bg-gray-50 border-t border-gray-200 text-center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

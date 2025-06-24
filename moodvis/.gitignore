@@ -1,0 +1,14 @@
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+
+.env
+.env.testing
+.phpunit.result.cache
+
+.vscode/
+
+# Folder dan file lainnya
+/storage
+/config/jwt.php
